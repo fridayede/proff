@@ -1,12 +1,23 @@
 import express from "express";
+import cors from "cors"
+import{clerkMiddleware} from "@clerk/express"
+
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
+import  UserRoutes from "./routes/User.route.js";
 
 const app = express();
 
+app.use(cors())
+app.use(express.json())
 
+
+
+app.use(clerkMiddleware());
 
 app.get("/",(req,res)=> res.send("Hello server"))
+
+app.use("/api/user",UserRoutes)
 
 
 
