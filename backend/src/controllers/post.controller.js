@@ -4,7 +4,7 @@ import User from "../models/User.model.js"
 import { getAuth } from "@clerk/express"
 import cloudinary from "../config/cloudinary.js"
 import notification from "../models/notification.model.js";
-// import notification from "../models/notification.model.js";
+
 import Comment from "../models/comment.model.js"
 
 export const getPosts = asyncHandler(async (req, res) => {

@@ -29,4 +29,4 @@ const commentSchema = new momgoose.Schema(
 
 const comment = momgoose.model("comment", commentSchema);
 
-export default Comment;
+export default comment;
