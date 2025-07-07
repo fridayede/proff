@@ -6,6 +6,7 @@ import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 import  UserRoutes from "./routes/User.route.js";
 import  PostRoutes from "./routes/post.route.js";
+import commentRoutes from "./routes/comment.route.js"
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/",(req,res)=> res.send("Hello from  server"))
 
 app.use("/api/user",UserRoutes);
 app.use("/api/posts",PostRoutes);
+app.use("/api/comment",commentRoutes);
 
 
 // error handling middleware 
