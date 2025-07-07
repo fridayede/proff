@@ -19,7 +19,7 @@ app.use(express.json())
 
 
 app.use(clerkMiddleware());
-app.use(arcjetMiddleware)
+app.use(arcjetMiddleware);
 
 app.get("/",(req,res)=> res.send("Hello from  server"))
 
@@ -45,8 +45,11 @@ const startServer = async () => {
         await connectDB();
         
         app.get("/", (req, res) => res.send("Hello server"))
-        
-        app.listen(ENV.PORT, () => console.log("server is up and running good on PORT:", ENV.PORT));
+        //listen for local development
+        // app.listen(ENV.PORT, () => console.log("server is up and running good on PORT:", ENV.PORT));
+        if (ENV.NODE_ENV  !=="production"){
+            app.listen(ENV.PORT, () => console.log("server is up and running good on PORT:", ENV.PORT));
+        }
     } catch (error) {
         console.error("Failed to start server:", error.message);
         process.exit(1);
@@ -54,3 +57,5 @@ const startServer = async () => {
 };
 
 startServer();
+//export for vercel 
+export default app
