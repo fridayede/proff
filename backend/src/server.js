@@ -7,6 +7,9 @@ import { connectDB } from "./config/db.js";
 import  UserRoutes from "./routes/User.route.js";
 import  PostRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js"
+import notification from "./routes/notification.route.js";
+import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
+
 
 const app = express();
 
@@ -16,12 +19,14 @@ app.use(express.json())
 
 
 app.use(clerkMiddleware());
+app.use(arcjetMiddleware)
 
 app.get("/",(req,res)=> res.send("Hello from  server"))
 
 app.use("/api/user",UserRoutes);
 app.use("/api/posts",PostRoutes);
 app.use("/api/comment",commentRoutes);
+app.use("/api/notification",notification);
 
 
 // error handling middleware 
